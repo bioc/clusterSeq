@@ -1,0 +1,19 @@
+Package: clusterSeq
+Type: Package
+Title: Clustering of high-throughput sequencing data by identifying
+        co-expression patterns
+Version: 0.99.10
+Depends: R (>= 3.4.0), methods, BiocParallel, baySeq, graphics, stats,
+        utils
+Imports: BiocGenerics
+Suggests: BiocStyle
+Date: 2016-01-19
+Author: Thomas J. Hardcastle & Irene Papatheodorou
+Maintainer: Thomas J. Hardcastle <tjh48@cam.ac.uk>
+Description: Identification of clusters of co-expressed genes based on
+        their expression across multiple (replicated) biological
+        samples.
+License: GPL-3
+LazyLoad: yes
+biocViews: Sequencing, DifferentialExpression, MultipleComparison,
+        Clustering, GeneExpression

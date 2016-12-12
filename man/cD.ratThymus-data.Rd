@@ -1,0 +1,26 @@
+\name{cD.ratThymus}
+\docType{data}
+\alias{cD.ratThymus}
+
+\title{Data from female rat thymus tissue taken from the Rat BodyMap
+  project (Yu et al, 2014) and processed by baySeq.} 
+
+\description{This data set is a \code{\link[baySeq]{countData}} object
+  for 17230 genes from 16 samples of female rat thymus tissue. The
+  tissues are extracted from four different age groups (2, 6, 21 and 104
+  week) with four replicates at each age. Posterior likelihoods for the
+  15 possible patterns of differential expression have been
+  precalculated using the code{\link[baySeq]{baySeq-package}} functions.
+}
+
+\value{A \code{\link[baySeq]{countData}} object}
+\usage{cD.ratThymus}
+\format{A \code{\link[baySeq]{countData}} object}
+\source{Illumina sequencing.}
+\seealso{\code{\link{ratThymus}}}
+
+\references{Yu Y. et al. A rat RNA-Seq transcriptomic BodyMap across 11
+  organs and 4 developmental stages. Nature Communications (2014)}
+
+\keyword{datasets}
+    

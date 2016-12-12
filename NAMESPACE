@@ -1,0 +1,7 @@
+importFrom("graphics", "lines", "plot")
+importFrom("stats", "as.dist", "cutree", "hclust", "kmeans", "median", "runif", "sd")
+importFrom("utils", "object.size", "read.table")
+importFrom("baySeq", "libsizes")
+importFrom("BiocGenerics", "unlist")
+import("methods", "BiocParallel")
+export("kCluster", "associatePosteriors", "plotCluster", "makeClusters", "makeClustersFF", "wallace")
