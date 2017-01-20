@@ -30,8 +30,9 @@ function(cD, maxK = 100, matrixFile = NULL, replicates = NULL, algorithm = "Lloy
         stat = max(sapply(split(cx, factor(cluster, levels = seq_len(k))), function(kx) diff(range(kx))))
                                         #wss <- sum(sapply(split(cx, factor(cluster, levels = seq_len(k))), function(kx) sum((kx - mean(kx))^2)))
         
-        if(k > 1) dstat <- stat / min(diff(sort(clustK$centers))) else dstat <- NA
+                                        #if(k > 1) dstat <- stat / min(diff(sort(clustK$centers))) else dstat <- NA
                                         #W <- sum(clustK$withinss)
+        dstat <- stat / diff(range(cx))
         c(clusterOrder, stat, dstat)
     }
     
@@ -113,7 +114,7 @@ function(cD, maxK = 100, matrixFile = NULL, replicates = NULL, algorithm = "Lloy
     infmat <- matrix(Inf, nrow = nrow(stats), ncol = ncol(stats))
 
     stats[1,monos] <- 0
-    stats[seq.int(2,nrow(stats)),monos] <- Inf
+#    stats[seq.int(2,nrow(stats)),monos] <- Inf
 
     if(!is.null(matrixFile)) {
         if(substr(matrixFile, nchar(matrixFile) -2, nchar(matrixFile)) != ".gz") {
@@ -135,18 +136,18 @@ function(cD, maxK = 100, matrixFile = NULL, replicates = NULL, algorithm = "Lloy
     kAM <- do.call("rbind", lapplyFun(seq_len(ncol(clusterings)), function(ii) {
             if(sample(seq_len(100), 1) == 1) message(".", appendLF = FALSE)
                                           # fill in temporary matrix with valid statistics for each comparison
-        tmat <- infmat; tmat[(clusterings[,ii] == clusterings)] <- stats[clusterings[,ii] == clusterings]
+            tmat <- infmat; tmat[(clusterings[,ii] == clusterings)] <- stats[clusterings[,ii] == clusterings]
                                         # update temporary matrix with stats from current gene (if bigger)
-        tmat <- apply(cbind(stats[,ii], tmat), 1, function(x) pmax(x[-1], x[1]))
-
+            tmat <- apply(cbind(stats[,ii], tmat), 1, function(x) pmax(x[-1], x[1]))
+            
                                         # select minimum statistic from each column of temporary matrix and write
 
-        minstats <- do.call(pmin, c(lapply(seq_len(ncol(tmat)), function(i)tmat[,i]), list(na.rm = TRUE)))
-        if(!is.null(matrixFile))
-            writeLines(paste(minstats, collapse = "\t"), gzfile)
-        minstats[seq_len(ii)] <- Inf
-        c(id = ii, pair.id = which.min(minstats), stat = min(minstats))
-    }))#, BPPARAM = BP(workers = as.integer(cores), progressbar = TRUE)))
+            minstats <- do.call(pmin, c(lapply(seq_len(ncol(tmat)), function(i)tmat[,i]), list(na.rm = TRUE)))
+            if(!is.null(matrixFile))
+                writeLines(paste(minstats, collapse = "\t"), gzfile)
+            minstats[seq_len(ii)] <- Inf
+            c(id = ii, pair.id = which.min(minstats), stat = min(minstats))
+        }))#, BPPARAM = BP(workers = as.integer(cores), progressbar = TRUE)))
 
     if(!is.null(matrixFile)) close(gzfile)
     message(".done!")
