@@ -45,7 +45,7 @@ function(aM, cD, threshold = 0.5) {
 
 makeClustersFF <- function(file, method = "complete", cut.height = 5)
 {
-    kmat <- read.table(file)
+    kmat <- read.table(file, header = TRUE, row.names=1)
     kmat[kmat == Inf] <- 1e6
     dkmat <- as.dist(kmat)
 

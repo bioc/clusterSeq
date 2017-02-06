@@ -1,5 +1,6 @@
 kCluster <-
-function(cD, maxK = 100, matrixFile = NULL, replicates = NULL, algorithm = "Lloyd", B = 1000, sdm = 1)
+
+    function(cD, maxK = 100, matrixFile = NULL, replicates = NULL, algorithm = "Lloyd", B = 1000, sdm = 1)
 {
 
     kstats <- function(k, x, cx) {
@@ -132,7 +133,10 @@ function(cD, maxK = 100, matrixFile = NULL, replicates = NULL, algorithm = "Lloy
 
     message("Comparing clusterings...", appendLF = FALSE)
 
-    if(!is.null(matrixFile)) lapplyFun <- lapply else lapplyFun <- bplapply
+    if(!is.null(matrixFile)) {
+        lapplyFun <- lapply
+        writeLines(paste(rownames(normRT), collapse = "\t"), gzfile)
+    } else lapplyFun <- bplapply
     kAM <- do.call("rbind", lapplyFun(seq_len(ncol(clusterings)), function(ii) {
             if(sample(seq_len(100), 1) == 1) message(".", appendLF = FALSE)
                                           # fill in temporary matrix with valid statistics for each comparison
@@ -144,7 +148,7 @@ function(cD, maxK = 100, matrixFile = NULL, replicates = NULL, algorithm = "Lloy
 
             minstats <- do.call(pmin, c(lapply(seq_len(ncol(tmat)), function(i)tmat[,i]), list(na.rm = TRUE)))
             if(!is.null(matrixFile))
-                writeLines(paste(minstats, collapse = "\t"), gzfile)
+                writeLines(paste(rownames(normRT)[ii], paste(minstats, collapse = "\t"), sep = "\t"), gzfile)
             minstats[seq_len(ii)] <- Inf
             c(id = ii, pair.id = which.min(minstats), stat = min(minstats))
         }))#, BPPARAM = BP(workers = as.integer(cores), progressbar = TRUE)))
