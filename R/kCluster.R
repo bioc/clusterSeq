@@ -1,3 +1,4 @@
+# modification on git from copied files
 kCluster <-
 
     function(cD, maxK = 100, matrixFile = NULL, replicates = NULL, algorithm = "Lloyd", B = 1000, sdm = 1)
@@ -77,8 +78,9 @@ kCluster <-
         
         bootExp <- function(x, cx, replicates, forceReplicates) {
             rx <- range(cx)
+            if(diff(rx) == 0) return(1)
             # uniform distribution gets rescaled here to range of data
-            lWs <- split(log(as.numeric(pseudoW) * diff(range(rx))), rep(seq_len(mpK), each = B))
+            lWs <- split(log(as.numeric(pseudoW) * diff(rx)), rep(seq_len(mpK), each = B))
             elWk <- sapply(lWs, mean)
             lW <- log(as.numeric(genestats[2,seq_len(mpK)]))
             gap <- elWk - lW
@@ -112,7 +114,7 @@ kCluster <-
     stats <- round(stats, 3)
 
                                         #temporary matrix prototype
-    infmat <- matrix(Inf, nrow = nrow(stats), ncol = ncol(stats))
+    infmat <- matrix(1, nrow = nrow(stats), ncol = ncol(stats))
 
     stats[1,monos] <- 0
 #    stats[seq.int(2,nrow(stats)),monos] <- Inf
@@ -135,7 +137,7 @@ kCluster <-
 
     if(!is.null(matrixFile)) {
         lapplyFun <- lapply
-        writeLines(paste(rownames(normRT), collapse = "\t"), gzfile)
+        writeLines(paste(c("", rownames(dat)), collapse = "\t"), gzfile)
     } else lapplyFun <- bplapply
     kAM <- do.call("rbind", lapplyFun(seq_len(ncol(clusterings)), function(ii) {
             if(sample(seq_len(100), 1) == 1) message(".", appendLF = FALSE)
@@ -148,8 +150,8 @@ kCluster <-
 
             minstats <- do.call(pmin, c(lapply(seq_len(ncol(tmat)), function(i)tmat[,i]), list(na.rm = TRUE)))
             if(!is.null(matrixFile))
-                writeLines(paste(rownames(normRT)[ii], paste(minstats, collapse = "\t"), sep = "\t"), gzfile)
-            minstats[seq_len(ii)] <- Inf
+                writeLines(paste(rownames(dat)[ii], paste(minstats, collapse = "\t"), sep = "\t"), gzfile)
+            minstats[seq_len(ii)] <- 1
             c(id = ii, pair.id = which.min(minstats), stat = min(minstats))
         }))#, BPPARAM = BP(workers = as.integer(cores), progressbar = TRUE)))
 

@@ -1,3 +1,4 @@
+# modification on git from copied files
 .nameList <- function(x, cD) {
     groups <- which(colSums(cD@posteriors[x,,drop = FALSE] > log(0.5)) > length(x) * 0.1)
     if(length(groups) == 0) return("")

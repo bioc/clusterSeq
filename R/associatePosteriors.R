@@ -1,3 +1,4 @@
+# modification on git from copied files
 associatePosteriors <-
 function(cD, maxsize = 250000, matrixFile = NULL) {    
     matord <- do.call("rbind", lapply(seq_len(ncol(cD@orderings)), function(ii) as.integer(cD@orderings[,ii])))

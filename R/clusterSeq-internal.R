@@ -1,3 +1,4 @@
+# modification on git from copied files
 .makeClusters <-
 function(assocMat, threshold = 0.5) {
     clM <- assocMat

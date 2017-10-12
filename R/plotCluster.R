@@ -1,3 +1,4 @@
+# modification on git from copied files
 plotCluster <-
 function(cluster, cD, sampleSize = 1000) {
     if(inherits(cD, "countData")) {

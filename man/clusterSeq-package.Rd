@@ -1,3 +1,4 @@
+% modification on git from copied files
 \name{clusterSeq-package}
 \alias{clusterSeq-package}
 \alias{clusterSeq}

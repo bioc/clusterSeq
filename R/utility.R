@@ -1,3 +1,4 @@
+# modification on git from copied files
 .clust2Vect <- function(x) {
     vec <- rep(NA, length(x))
     vec[unlist(x)] <- rep(seq_along(x), sapply(x, length))   

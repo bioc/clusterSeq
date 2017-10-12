@@ -1,3 +1,4 @@
+% modification on git from copied files
 \name{associatePosteriors}
 \alias{associatePosteriors}
 \title{Associates posterior likelihood to generate co-expression
