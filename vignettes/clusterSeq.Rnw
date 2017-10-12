@@ -1,3 +1,4 @@
+% git mod
 %\VignetteIndexEntry{Advanced baySeq analyses}
 %\VignettePackage{baySeq}
 %\VignetteKeywords{baySeq, generic, advanced}
