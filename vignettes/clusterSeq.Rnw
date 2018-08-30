@@ -22,8 +22,9 @@ This vignette outlines two possibilities for clustering gene expression based on
 
 The package can be installed as
 <<eval=FALSE>>=
-source("http://www.bioconductor.org/biocLite.R")
-biocLite("clusterSeq")
+if (!requireNamespace("BiocManager", quietly=TRUE))
+    install.packages("BiocManager")
+BiocManager::install("clusterSeq")
 @
 
 <<>>=
