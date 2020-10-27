@@ -2,7 +2,7 @@ Package: clusterSeq
 Type: Package
 Title: Clustering of high-throughput sequencing data by identifying
         co-expression patterns
-Version: 1.14.0
+Version: 1.15.0
 Depends: R (>= 3.0.0), methods, BiocParallel, baySeq, graphics, stats,
         utils
 Imports: BiocGenerics
