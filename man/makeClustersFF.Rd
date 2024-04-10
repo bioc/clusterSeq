@@ -57,6 +57,9 @@ kClust <- kCluster(normRT, B = 1000, matrixFile = "kclust.gz")
 
 # make the clusters from these data.
 mkClustR <- makeClustersFF("kclust.gz")
+
+# no need to clean up (specific to Bioconductor pipeline)
+file.remove("kclust.gz")
 }
 
 

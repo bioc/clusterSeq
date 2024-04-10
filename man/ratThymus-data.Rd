@@ -14,7 +14,7 @@
 }
 
 \value{A matrix}
-\usage{ratThymus}
+\usage{data(ratThymus)}
 \format{A matrix of RNA-Seq counts in which each of the sixteen columns
   represents a sample, and each row a gene locus.}
 \source{Illumina sequencing.}

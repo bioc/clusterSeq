@@ -6,7 +6,7 @@
 Computes Wallace scores comparing two clustering methods.
 }
 \description{
-  Given two clusterings A \& B we can calculate the likelihood that
+  Given two clusterings A and B we can calculate the likelihood that
   two elements are in the same cluster in B given that they are in the
   same cluster in A, and vice versa.
 }

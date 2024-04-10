@@ -11,11 +11,11 @@
   tissues are extracted from four different age groups (2, 6, 21 and 104
   week) with four replicates at each age. Posterior likelihoods for the
   15 possible patterns of differential expression have been
-  precalculated using the code{\link[baySeq]{baySeq-package}} functions.
+  precalculated using the \code{\link[baySeq]{baySeq-package}} functions.
 }
 
 \value{A \code{\link[baySeq]{countData}} object}
-\usage{cD.ratThymus}
+\usage{data(cD.ratThymus)}
 \format{A \code{\link[baySeq]{countData}} object}
 \source{Illumina sequencing.}
 \seealso{\code{\link{ratThymus}}}
