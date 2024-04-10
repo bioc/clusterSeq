@@ -8,8 +8,9 @@ Depends: R (>= 3.0.0), methods, BiocParallel, baySeq, graphics, stats,
 Imports: BiocGenerics
 Suggests: BiocStyle
 Date: 2016-01-19
-Author: Thomas J. Hardcastle & Irene Papatheodorou
-Maintainer: Thomas J. Hardcastle <tjh48@cam.ac.uk>
+Authors@R: c(person("Thomas J.", "Hardcastle", role = "aut"),
+  person("Irene", "Papatheodorou", role = "aut"),
+  person("Samuel", "Granjeaud", role = "cre", email = "samuel.granjeaud@inserm.fr", comment=c(ORCID="0000-0001-9245-1535")))
 Description: Identification of clusters of co-expressed genes based on
         their expression across multiple (replicated) biological
         samples.
@@ -17,4 +18,6 @@ License: GPL-3
 LazyLoad: yes
 biocViews: Sequencing, DifferentialExpression, MultipleComparison,
         Clustering, GeneExpression
+URL: https://github.com/samgg/clusterSeq
+BugReports: https://github.com/samgg/clusterSeq/issues
 PackageStatus: Deprecated
