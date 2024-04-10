@@ -1,0 +1,30 @@
+pkgVer <- function(pkg) {
+    if (!exists("meta") || is.null(meta)) meta <- packageDescription(pkg)
+    ver <- meta$Version
+    paste0('https://github.com/SamGG/clusterSeq/', pkg, ' - R package version ', ver)
+}
+
+c(
+    bibentry(bibtype="manual",
+        title = "Clustering of high-throughput sequencing data by identifying co-expression patterns",
+        author = personList(
+            as.person("Hardcastle, Thomas J"),
+            as.person("Papatheodorou, Irene")
+        ),
+        year = format(Sys.Date(), "%Y"),
+        url = "http://www.bioconductor.org/packages/clusterSeq",
+        note = pkgVer('clusterSeq'),
+        doi = '10.18129/B9.bioc.clusterSeq'
+    ),
+    bibentry(bibtype="article",
+        title = "clusterSeq: methods for identifying co-expression in high-throughput sequencing data",
+        author = personList(
+            as.person("Hardcastle, Thomas J"),
+            as.person("Papatheodorou, Irene")
+        ),
+        year = "2017 Sep 13",
+        journal = "bioRxiv",
+        doi = "10.1101/188581",
+        url = "https://www.biorxiv.org/content/10.1101/188581"
+    )
+)
