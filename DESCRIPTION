@@ -2,7 +2,7 @@ Package: clusterSeq
 Type: Package
 Title: Clustering of high-throughput sequencing data by identifying
         co-expression patterns
-Version: 1.27.2
+Version: 1.27.3
 Depends: R (>= 3.0.0), methods, BiocParallel, baySeq, graphics, stats,
         utils
 Imports: BiocGenerics
@@ -20,4 +20,3 @@ biocViews: Sequencing, DifferentialExpression, MultipleComparison,
         Clustering, GeneExpression
 URL: https://github.com/samgg/clusterSeq
 BugReports: https://github.com/samgg/clusterSeq/issues
-PackageStatus: Deprecated
